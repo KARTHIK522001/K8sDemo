@@ -1,0 +1,47 @@
+FULL feature Demo of K8s
+
+Get the 
+https://github.com/CloudDevOpsHub/K8sDemo/tree/main
+
+Part-1 
+1. Create a Kubernetes Namespace
+
+kubectl create namespace k8s-workshop
+kubectl config set-context --current --namespace=k8s-workshop
+
+cd K8sdemo
+2nd Deploy Secret 
+kubectl apply -f Secret.yaml
+
+kubectl get secret db-secret -o yaml 
+
+kubectl get secret 
+
+3rd Deploy Config Map
+kubectl apply -f configmap.yaml
+kubectl describe configmap app-config
+
+4th  Deploy a Demo App
+kubectl apply -f deployment.yaml
+kubectl get pods -w   # watch rollout live
+
+5th Deploy Service 
+kubectl apply -f service.yaml
+
+6th Deploy Ingress Ingress for Public Access with URL 
+kubectl apply -f ingress.yaml
+
+----------------
+
+kubectl scale deployment demo-app --replicas=5
+
+kubectl rollout status deployment demo-app
+
+kubectl logs -l app=demo -f
+
+kubectl exec -it deploy/demo-app -- bash
+
+kubectl apply -f ingress.yaml
+kubectl get ingress demo-ingress -w
+
+kubectl port-forward svc/demo-service 8080:80
