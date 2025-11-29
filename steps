@@ -58,7 +58,7 @@ Part 2 with OWN HTML file
 
 reate a ConfigMap from index.html
 
-kubectl create configmap web-content \
+kubectl create ConfigMap web-content \
   --from-file=index.html \
   -n k8s-workshop
 
